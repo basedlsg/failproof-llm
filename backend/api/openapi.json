@@ -1,0 +1,357 @@
+{
+  "openapi": "3.0.2",
+  "info": {
+    "title": "FailProof LLM API",
+    "version": "0.1.0"
+  },
+  "paths": {
+    "/api/runs": {
+      "get": {
+        "summary": "Get Runs",
+        "operationId": "get_runs_api_runs_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Response Get Runs Api Runs Get",
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Run"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/runs/{id}": {
+      "get": {
+        "summary": "Get Run",
+        "operationId": "get_run_api_runs__id__get",
+        "parameters": [
+          {
+            "required": true,
+            "schema": {
+              "title": "Id",
+              "type": "string"
+            },
+            "name": "id",
+            "in": "path"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Run"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/runs/{id}/cases": {
+      "get": {
+        "summary": "Get Run Cases",
+        "operationId": "get_run_cases_api_runs__id__cases_get",
+        "parameters": [
+          {
+            "required": true,
+            "schema": {
+              "title": "Id",
+              "type": "string"
+            },
+            "name": "id",
+            "in": "path"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Response Get Run Cases Api Runs  Id  Cases Get",
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/RunResult"
+                  }
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/cases/{id}": {
+      "get": {
+        "summary": "Get Case",
+        "operationId": "get_case_api_cases__id__get",
+        "parameters": [
+          {
+            "required": true,
+            "schema": {
+              "title": "Id",
+              "type": "string"
+            },
+            "name": "id",
+            "in": "path"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RunResult"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/runs/{id}/report.md": {
+      "get": {
+        "summary": "Get Run Report",
+        "operationId": "get_run_report_api_runs__id__report_md_get",
+        "parameters": [
+          {
+            "required": true,
+            "schema": {
+              "title": "Id",
+              "type": "string"
+            },
+            "name": "id",
+            "in": "path"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "HTTPValidationError": {
+        "title": "HTTPValidationError",
+        "type": "object",
+        "properties": {
+          "detail": {
+            "title": "Detail",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ValidationError"
+            }
+          }
+        }
+      },
+      "Run": {
+        "title": "Run",
+        "required": [
+          "run_id",
+          "model_id",
+          "timestamp_utc",
+          "suite_stats"
+        ],
+        "type": "object",
+        "properties": {
+          "run_id": {
+            "title": "Run Id",
+            "type": "string"
+          },
+          "model_id": {
+            "title": "Model Id",
+            "type": "string"
+          },
+          "timestamp_utc": {
+            "title": "Timestamp Utc",
+            "type": "string"
+          },
+          "suite_stats": {
+            "$ref": "#/components/schemas/SuiteStats"
+          }
+        }
+      },
+      "RunResult": {
+        "title": "RunResult",
+        "required": [
+          "run_id",
+          "suite_id",
+          "case_id",
+          "model_id",
+          "timestamp_utc",
+          "prompt",
+          "response",
+          "classification",
+          "score"
+        ],
+        "type": "object",
+        "properties": {
+          "run_id": {
+            "title": "Run Id",
+            "type": "string"
+          },
+          "suite_id": {
+            "title": "Suite Id",
+            "type": "string"
+          },
+          "case_id": {
+            "title": "Case Id",
+            "type": "string"
+          },
+          "model_id": {
+            "title": "Model Id",
+            "type": "string"
+          },
+          "timestamp_utc": {
+            "title": "Timestamp Utc",
+            "type": "string",
+            "format": "date-time"
+          },
+          "prompt": {
+            "title": "Prompt",
+            "type": "string"
+          },
+          "response": {
+            "title": "Response",
+            "type": "string"
+          },
+          "classification": {
+            "title": "Classification",
+            "type": "object"
+          },
+          "score": {
+            "title": "Score",
+            "type": "number"
+          },
+          "error": {
+            "title": "Error",
+            "type": "string"
+          }
+        }
+      },
+      "SuiteStats": {
+        "title": "SuiteStats",
+        "required": [
+          "suite_id",
+          "total_cases",
+          "pass_count",
+          "fail_count",
+          "error_count"
+        ],
+        "type": "object",
+        "properties": {
+          "suite_id": {
+            "title": "Suite Id",
+            "type": "string"
+          },
+          "total_cases": {
+            "title": "Total Cases",
+            "type": "integer"
+          },
+          "pass_count": {
+            "title": "Pass Count",
+            "type": "integer"
+          },
+          "fail_count": {
+            "title": "Fail Count",
+            "type": "integer"
+          },
+          "error_count": {
+            "title": "Error Count",
+            "type": "integer"
+          }
+        }
+      },
+      "ValidationError": {
+        "title": "ValidationError",
+        "required": [
+          "loc",
+          "msg",
+          "type"
+        ],
+        "type": "object",
+        "properties": {
+          "loc": {
+            "title": "Location",
+            "type": "array",
+            "items": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            }
+          },
+          "msg": {
+            "title": "Message",
+            "type": "string"
+          },
+          "type": {
+            "title": "Error Type",
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

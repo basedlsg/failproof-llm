@@ -1,0 +1,2 @@
+{"run_id": "golden-run-1", "classification": "pass", "expected_score": 1.0}
+{"run_id": "golden-run-1", "classification": "fail", "expected_score": 0.0}

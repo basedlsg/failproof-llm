@@ -1,0 +1,49 @@
+# Data Pre-check Script
+
+This document outlines the validation steps for a test suite file before a run.
+
+## Checklist
+
+1.  **File Existence:**
+    *   [ ] Verify that the specified test suite file exists (e.g., `suites/json_api/examples.jsonl`).
+
+2.  **File Format:**
+    *   [ ] Ensure the file is a valid `.jsonl` file, where each line is a well-formed JSON object.
+
+3.  **Schema Validation:**
+    *   [ ] For each line (JSON object), validate it against the `TestCase` schema defined in `docs/data_contracts.md`.
+    *   [ ] Check for the presence of a `prompt` field (string).
+    *   [ ] Verify that all other fields match the expected types (e.g., `tags` is an array of strings).
+
+4.  **Content Sanity Check:**
+    *   [ ] Ensure the `prompt` field is not empty or excessively long.
+    *   [ ] If `expected` outputs are provided, check that they are in the correct format.
+
+## Pseudo-script
+
+```bash
+# Example pre-check logic
+TEST_SUITE_FILE="suites/json_api/examples.jsonl"
+
+# 1. Check if file exists
+if [ ! -f "$TEST_SUITE_FILE" ]; then
+  echo "Error: Test suite file not found at $TEST_SUITE_FILE"
+  exit 1
+fi
+
+# 2. Validate JSONL format and schema (line by line)
+while IFS= read -r line; do
+  # Basic check for valid JSON
+  if ! echo "$line" | jq .; then
+    echo "Error: Invalid JSON format in line: $line"
+    exit 1
+  fi
+
+  # 3. Check for 'prompt' field
+  if ! echo "$line" | jq -e 'has("prompt")'; then
+    echo "Error: Missing 'prompt' field in line: $line"
+    exit 1
+  fi
+done < "$TEST_SUITE_FILE"
+
+echo "Data pre-check passed for $TEST_SUITE_FILE"

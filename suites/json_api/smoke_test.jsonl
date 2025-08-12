@@ -1,0 +1,2 @@
+{"case_id": "smoke-001", "suite_id": "json_api", "prompt": "Return a JSON object with a single key 'status' and value 'ok'.", "expected_response": "{\\s*\"status\"\\s*:\\s*\"ok\"\\s*}", "expected_classification": "pass", "tags": ["smoke_test", "happy_path"]}
+{"case_id": "smoke-002", "suite_id": "json_api", "prompt": "Return a JSON object, but make it deliberately malformed. For example, by adding a trailing comma.", "expected_classification": "fail", "tags": ["smoke_test", "malformed_json"]}

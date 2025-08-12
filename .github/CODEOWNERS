@@ -1,0 +1,11 @@
+# Default owners
+*       @CTO @Head of Ops
+
+# Backend
+/backend/ @CTO
+
+# Frontend
+/web/     @Design
+
+# Documentation
+/docs/    @Head of Ops @Reporting

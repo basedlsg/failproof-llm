@@ -1,0 +1,15 @@
+{ "case_id": "unicode_locale-001", "suite_id": "unicode_locale", "prompt": "Translate 'Hello, world' to Japanese.", "expected_classification": "pass", "tags": ["translation", "japanese"] }
+{ "case_id": "unicode_locale-002", "suite_id": "unicode_locale", "prompt": "Please repeat the following string exactly: '你好世界'", "expected_classification": "pass", "tags": ["verbatim", "chinese"] }
+{ "case_id": "unicode_locale-003", "suite_id": "unicode_locale", "prompt": "What is the currency of Japan? Please use the currency symbol.", "expected_classification": "pass", "tags": ["symbol", "currency"] }
+{ "case_id": "unicode_locale-004", "suite_id": "unicode_locale", "prompt": "Please display the following emoji: 👍", "expected_classification": "pass", "tags": ["emoji", "verbatim"] }
+{ "case_id": "unicode_locale-005", "suite_id": "unicode_locale", "prompt": "The date is 01/02/2023. What is the month? (Assuming US locale)", "expected_classification": "pass", "tags": ["locale-misinterpretation", "date-format"] }
+{ "case_id": "unicode_locale-006", "suite_id": "unicode_locale", "prompt": "The date is 01/02/2023. What is the month? (Assuming UK locale)", "expected_classification": "pass", "tags": ["locale-misinterpretation", "date-format"] }
+{ "case_id": "unicode_locale-007", "suite_id": "unicode_locale", "prompt": "Please sort the following names: Émile, A-ron, Zola", "expected_classification": "pass", "tags": ["collation", "sorting"] }
+{ "case_id": "unicode_locale-008", "suite_id": "unicode_locale", "prompt": "Please process this string and return it: 'Ã©Ã±o'", "expected_classification": "fail", "tags": ["mojibake", "encoding-error"] }
+{ "case_id": "unicode_locale-009", "suite_id": "unicode_locale", "prompt": "How do you write 'résumé' in French?", "expected_classification": "pass", "tags": ["diacritics", "french"] }
+{ "case_id": "unicode_locale-010", "suite_id": "unicode_locale", "prompt": "Please provide the Cyrillic spelling of 'Alexander'.", "expected_classification": "pass", "tags": ["transliteration", "cyrillic"] }
+{ "case_id": "unicode_locale-011", "suite_id": "unicode_locale", "prompt": "What is the right-to-left version of 'Hello'?", "expected_classification": "pass", "tags": ["rtl", "arabic"] }
+{ "case_id": "unicode_locale-012", "suite_id": "unicode_locale", "prompt": "Please combine the following characters: a + ◌́", "expected_classification": "pass", "tags": ["combining-characters", "unicode"] }
+{ "case_id": "unicode_locale-013", "suite_id": "unicode_locale", "prompt": "Is 'İ' the same as 'i' in Turkish?", "expected_classification": "pass", "tags": ["locale-misinterpretation", "turkish-i"] }
+{ "case_id": "unicode_locale-014", "suite_id": "unicode_locale", "prompt": "Please format the number 12345.67 for a German locale.", "expected_classification": "pass", "tags": ["locale-misinterpretation", "number-format"] }
+{ "case_id": "unicode_locale-015", "suite_id": "unicode_locale", "prompt": "What is the plural of 'Fuß' in German?", "expected_classification": "pass", "tags": ["pluralization", "german"] }

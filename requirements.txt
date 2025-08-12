@@ -1,0 +1,9 @@
+pydantic
+sqlalchemy
+pytest
+typer
+python-dotenv
+google-generativeai
+mypy
+pytest-cov
+typing-extensions

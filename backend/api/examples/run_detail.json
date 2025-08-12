@@ -1,0 +1,12 @@
+{
+  "run_id": "2025-08-10-07-41-00",
+  "model_id": "gpt-4",
+  "timestamp_utc": "2025-08-10T07:41:00Z",
+  "suite_stats": {
+    "suite_id": "json_api",
+    "total_cases": 1,
+    "pass_count": 1,
+    "fail_count": 0,
+    "error_count": 0
+  }
+}
