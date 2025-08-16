@@ -1,0 +1,42 @@
+# Walking Stick Lab Seed Paper  
+**Failproof-LLM: Toward Robust and Safe Model Evaluation**
+
+## Abstract
+Failproof-LLM scaffolds a reproducible harness for testing large language model robustness and safety. It ships a Makefile-driven setup, backend services, a web dashboard, and clean separation of suites/reports/docs. We define what “fail-proof” must mean, specify evaluation taxonomies, and propose a roadmap for the first credible public robustness benchmark.
+
+## 1. Problem & Motivation
+LLMs fail in subtle ways: jailbreaks, hallucinations, JSON corruption. Without systematic stress tests, models cannot be trusted in production.
+
+## 2. Implementation Facts
+- **Setup:** `make setup`, `make demo`, `make dev`.
+- **Services:** API at `localhost:8000`, dashboard at `3000`.
+- **Structure:**  
+  - `backend/` (execution, scoring, integrations).  
+  - `web/` (frontend).  
+  - `suites/` (test sets).  
+  - `reports/`, `docs/`.
+
+## 3. Robustness Taxonomy (our standard)
+- Jailbreak / refusal-evasion.
+- Prompt injection & spec conflicts.
+- Hallucination under constraint.
+- Malformed I/O & JSON guarantees.
+- Paraphrase stability & recovery after compromise.
+
+## 4. Metrics
+- Abstention calibration.
+- Self-consistency under paraphrase.
+- Recovery curves (time to regain compliance).
+- Cost + latency per model.
+
+## 5. Minimal Publishable Unit
+- 300–500 public prompts with adversarial transforms.
+- Cross-model evaluation (1 open-weight, 2 APIs).
+- One-page “risk profile” per model.
+
+## 6. Research & Learning Value
+- **Research:** Comparative robustness claims under reproducible conditions.  
+- **Learning:** Students can see how notebooks evolve into professional test harnesses.
+
+## 7. Lab Verdict
+**GO (Instrumentation First).** The harness is sound. Credibility requires curated suites + stability metrics within 60 days.
