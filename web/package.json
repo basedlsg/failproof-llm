@@ -11,7 +11,7 @@
     "generate-api-client": "openapi-typescript ../backend/api/openapi.json --output ./lib/api-client.ts"
   },
   "devDependencies": {
-    "eslint": "^8.0.0",
+    "eslint": "^9.34.0",
     "typescript": "^5.0.0",
     "openapi-typescript-codegen": "^0.25.0"
   }
